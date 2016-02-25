@@ -3,8 +3,6 @@
 # clone the dotfiles directory from pobept63 bitbucket hg repo first
 # stick this in ~/bin
 
-set -x
-
 DOTFILES=$PWD
 
 echo " DOTFILES = $DOTFILES "

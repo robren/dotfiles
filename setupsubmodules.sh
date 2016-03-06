@@ -9,6 +9,8 @@ git submodule add https://github.com/plasticboy/vim-markdown.git vim/bundle/vim-
 git submodule add https://github.com/vim-scripts/L9.git vim/bundle/L9
 git submodule add https://github.com/vim-scripts/ctrlp.vim.git vim/bundle/ctrlp.vim
 git submodule add https://github.com/vim-scripts/ucompleteme.git vim/bundle/ucompleteme
+git submodule add https://github.com/vim-scripts/vim-buffergator.git vim/bundle/vim-buffergator
+git submodule add https://github.com/vim-scripts/vim-go.git vim/bundle/vim-go
 
 
 

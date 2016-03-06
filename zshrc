@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export GOPATH=$HOME/code/go
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,11 +50,17 @@ ZSH_THEME="frisk"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
-plugins=(git)
+
+# Added since the  zshvirtualenvwrapper and virtual env were not working
+
+#echo "sourcing the venv"
+source /usr/local/bin/virtualenvwrapper.sh
+plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
 
 # User configuration
 
-export PATH="$PATH:$HOME/bin:$HOME/algs4/bin"
+#export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$HOME/algs4/bin"
+export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$GOPATH/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

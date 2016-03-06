@@ -28,7 +28,8 @@ alias ....='cd ../../..'
 export EDITOR=vim
 
 alias gl='git log --oneline --all --decorate --graph'
-alias docker-clean='docker kill $(docker ps -q) && docker rm $(docker ps -qa)'
+alias docker-kill-all='docker kill $(docker ps -q)'
+alias docker-clean='docker rm $(docker ps -qa)'
 
 alias xclip='xclip -selection c'
 

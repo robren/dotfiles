@@ -97,3 +97,5 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 eval $(dircolors $HOME/.dircolors)
+
+export TERM=screen-256color

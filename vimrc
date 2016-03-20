@@ -273,3 +273,5 @@ vnoremap <C-c> "*y
 
 autocmd Filetype java set makeprg=javac-algs4\ %
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+
+set tabstop=4

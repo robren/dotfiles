@@ -19,6 +19,7 @@ alias p='pushd'
 alias o='popd'
 alias golearn='cd $DROPBOX/codelearn/'
 alias gobooks='cd $DROPBOX/Books/'
+alias gonotes='cd $DROPBOX/Notes/'
 
 alias g='mvim --remote-silent'
 

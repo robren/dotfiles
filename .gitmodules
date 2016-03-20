@@ -18,7 +18,13 @@
 	url = https://github.com/vim-scripts/L9.git
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
-	url = https://github.com/vim-scripts/ctrlp.vim.git
+	url = http://github.com/ctrlpvim/ctrlp.vim
 [submodule "vim/bundle/ucompleteme"]
 	path = vim/bundle/ucompleteme
 	url = https://github.com/vim-scripts/ucompleteme.git
+[submodule "vim/bundle/vim-buffergator"]
+	path = vim/bundle/vim-buffergator
+	url = https://github.com/jeetsukumaran/vim-buffergator.git
+[submodule "vim/bundle/vim-go"]
+	path = vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git

@@ -54,7 +54,7 @@ ZSH_THEME="frisk"
 # Added since the  zshvirtualenvwrapper and virtual env were not working
 
 #echo "sourcing the venv"
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
 
 # User configuration
@@ -96,6 +96,6 @@ if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
-eval $(dircolors $HOME/.dircolors)
+# eval $(dircolors $HOME/.dircolors)
 
 export TERM=screen-256color

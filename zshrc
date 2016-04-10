@@ -6,10 +6,11 @@ export GOPATH=$HOME/code/go
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="ys"
-ZSH_THEME="frisk"
+#ZSH_THEME="frisk"
+#ZSH_THEME="cypher"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -53,9 +54,10 @@ ZSH_THEME="frisk"
 
 # Added since the  zshvirtualenvwrapper and virtual env were not working
 
-#echo "sourcing the venv"
+#echo "sourcing the virtualenvwrapper"
 #source /usr/local/bin/virtualenvwrapper.sh
-plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
+#plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
+plugins=(git docker docker-compose go)
 
 # User configuration
 
@@ -98,4 +100,4 @@ fi
 
 # eval $(dircolors $HOME/.dircolors)
 
-export TERM=screen-256color
+#export TERM=screen-256color

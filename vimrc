@@ -225,7 +225,7 @@ execute pathogen#infect()
 
 let g:CommandTMaxFiles=100000
 
-call ucompleteme#Setup()
+"call ucompleteme#Setup()
 
 filetype plugin on 	
 filetype indent on
@@ -275,3 +275,5 @@ autocmd Filetype java set makeprg=javac-algs4\ %
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 
 set tabstop=4
+
+

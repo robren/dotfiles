@@ -34,4 +34,5 @@ alias docker-kill-all='docker kill $(docker ps -q)'
 alias docker-clean='docker rm $(docker ps -qa)'
 
 alias xclip='xclip -selection c'
+alias myip='curl ifconfig.me'
 

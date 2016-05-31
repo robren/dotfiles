@@ -249,7 +249,10 @@ inoremap <F5> <C-R>=strftime("%c")<CR>
 "Make editing notes easy
 nnoremap <leader>n :e ~/Dropbox/Notes
 
-set clipboard=unnamed
+if $TMUX == ''
+    set clipboard=unnamed
+endif
+
 " Make folding off by default no more zR 
 set nofoldenable
 

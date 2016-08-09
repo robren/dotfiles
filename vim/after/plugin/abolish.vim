@@ -13,5 +13,4 @@ Abolish secodnary secondary
 Abolish tehmselves themselves
 Abolish silands islands
 Abolish offloadeing offloading
-Abolish func functionality
 

@@ -17,10 +17,11 @@ alias which='type -a'
 alias ..='cd ..'
 alias p='pushd'
 alias o='popd'
-alias golearn='cd $DROPBOX/codelearn/'
+alias golearn='cd $HOME/codelearn/'
+alias godropbox='cd $DROPBOX/'
 alias gobooks='cd $DROPBOX/Books/'
-alias gonotes='cd $DROPBOX/Notes/'
-alias goblog='cd $DROPBOX/Blog/'
+alias gonotes='cd $HOME/Notes/'
+alias goblog='cd $HOME/Blog/'
 
 alias g='mvim --remote-silent'
 
@@ -38,6 +39,7 @@ alias myip='curl ifconfig.me'
 
 function docker-rm-all-images() { docker rmi $(docker images| grep "^<none>" | awk '{print $3}') }
 #docker-rm-all-images() { docker rmi (docker images| grep "^<none>" | awk '{print \$3}'); }
+alias t='$HOME/bin/todo.sh -d /home/test/.todo/config'
 
 
 

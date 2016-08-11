@@ -278,5 +278,15 @@ autocmd Filetype java set makeprg=javac-algs4\ %
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 
 set tabstop=4
+" paste mode is usefull for .. pasting text, But has some side efeects:
+" It disables abbreviations, resets wrapmargin, autoindent....
+" :he paste
+" If ve've used paste then :set nopaste will be needed in same editor session
+" set paste
+
+" using the abbreviation command to allow dts to be expanded  inline to insert the date and time 
+" debug me abbreviations not working
+iab <expr> dts strftime("%c")
+
 
 

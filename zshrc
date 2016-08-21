@@ -57,7 +57,7 @@ ZSH_THEME="cypher"
 #echo "sourcing the virtualenvwrapper"
 #source /usr/local/bin/virtualenvwrapper.sh
 #plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
-plugins=(git docker docker-compose go)
+plugins=(git docker docker-compose go safe-paste)
 
 # User configuration
 

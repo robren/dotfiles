@@ -22,6 +22,7 @@ alias godropbox='cd $DROPBOX/'
 alias gobooks='cd $DROPBOX/Books/'
 alias gonotes='cd $HOME/Notes/'
 alias goblog='cd $HOME/Blog/'
+alias gogo='cd $GOPATH'
 
 alias g='mvim --remote-silent'
 
@@ -36,10 +37,12 @@ alias docker-clean='docker rm $(docker ps -qa)'
 
 alias xclip='xclip -selection c'
 alias myip='curl ifconfig.me'
+alias myip='curl ipinfo.io'
 
 function docker-rm-all-images() { docker rmi $(docker images| grep "^<none>" | awk '{print $3}') }
 #docker-rm-all-images() { docker rmi (docker images| grep "^<none>" | awk '{print \$3}'); }
 alias t='$HOME/bin/todo.sh -d /home/test/.todo/config'
+
 
 
 

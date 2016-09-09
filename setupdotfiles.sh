@@ -14,9 +14,17 @@ fi
 for i in bash_profile bashrc bash_aliases zsh_aliases zsh zshrc \
     vimrc vim  tmux.conf  
 do
+    if [ -e ~/.$i ]
+    then
+        if [ ! -e ~/olddotfiles ]
+        then
+            mkdir ~/olddotfiles
+        fi
+        mv ~/.$i ~/olddotfiles
+    fi
     if [ ! -e ~/.$i ]
     then
-        ln -sf $DOTFILES/$i ~/.$i  
+        ln -sf $DOTFILES/$i ~/.$i
     fi
 done
 

@@ -1,7 +1,7 @@
 " vim: foldmethod=marker
 " Preferences {{{
 " Do not try to be compatible with vi
-set nocompatible 	
+set nocompatible
 
 if has('gui_running')
   set guifont=Monaco:h16
@@ -22,12 +22,11 @@ endif
 "  if exists("+columns")
 "    set columns=100
 "  endif
- 
 " Turn on the syntax highlighting
 syntax on
 
-" Turn on spelling 
-"set spell spelllang=en_us  
+" Turn on spelling
+"set spell spelllang=en_us
 "setlocal spell spelllang=en_us  
 autocmd FileType text  setlocal spell spelllang=en_us  
 "highlight clear SpellBad
@@ -233,6 +232,7 @@ autocmd FileType make   set noexpandtab
 autocmd FileType html   setlocal shiftwidth=2 tabstop=2
 autocmd FileType xml    setlocal shiftwidth=2 tabstop=2
 autocmd FileType docbk  setlocal shiftwidth=2 tabstop=2
+autocmd FileType python   setlocal shiftwidth=4 tabstop=4 expandtab 
 autocmd FileType docbk  syntax spell toplevel 
  
 "noremap <Space> @q
@@ -288,5 +288,10 @@ set tabstop=4
 " debug me abbreviations not working
 iab <expr> dts strftime("%c")
 
+set path+=**
+set wildmenu
 
+" configure the airline plugin to automatically show all open buffers when
+" there is only one tab open
+let g:airline#extensions#tabline#enabled = 1
 

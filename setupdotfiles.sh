@@ -39,3 +39,6 @@ unset GNOME_KEYRING_CONTROL
 # Need to pull in the git submodules
 git submodule init
 git submodule update
+
+# clone the Tmux plugin repo
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

@@ -20,7 +20,7 @@ alias o='popd'
 alias golearn='cd $HOME/codelearn/'
 alias godropbox='cd $DROPBOX/'
 alias gobooks='cd $DROPBOX/Books/'
-alias gonotes='cd $HOME/Notes/'
+alias gonotes='cd $HOME/Dropbox/Notes/'
 alias goblog='cd $HOME/Blog/'
 alias gogo='cd $GOPATH'
 

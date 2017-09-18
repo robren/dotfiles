@@ -6,12 +6,12 @@ export GOPATH=$HOME/code/go
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="ys"
 #ZSH_THEME="frisk"
-ZSH_THEME="cypher"
-
+#ZSH_THEME="cypher"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -60,9 +60,10 @@ ZSH_THEME="cypher"
 plugins=(git docker docker-compose go safe-paste)
 
 # User configuration
+export MINICONDAPATH=$HOME/miniconda3/bin
 
 #export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$HOME/algs4/bin"
-export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$GOPATH/bin"
+export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$GOPATH/bin:$MINICONDAPATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -104,3 +105,15 @@ fi
 if [ "$TERM" = "xterm" ] ; then
     export TERM=xterm-256color 
 fi
+
+export WORKON_HOME=$HOME/VirtualEnvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/test/tools/google-cloud-sdk/path.zsh.inc' ]; then source '/home/test/tools/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/test/tools/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/test/tools/google-cloud-sdk/completion.zsh.inc'; fi
+
+source ~/bin/quandl-env.sh

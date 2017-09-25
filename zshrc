@@ -60,11 +60,16 @@ ZSH_THEME="robbyrussell"
 plugins=(git docker docker-compose go safe-paste)
 
 # User configuration
-export MINICONDAPATH=$HOME/miniconda3/bin
+TEXBINPATH="/usr/local/texlive/2017/bin/x86_64-linux"
+TEXMANPATH="/usr/local/texlive/2017/texmf-dist/doc/man"
+TEXINFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info"
+
 
 #export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$HOME/algs4/bin"
-export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$GOPATH/bin:$MINICONDAPATH"
+export PATH="$PATH:$HOME/bin:$TEXBINPATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="$MANPATH:$TEXMANPATH"
+export INFOPATH="$INFOPATH:$TEXINFOPATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,19 +113,12 @@ fi
 
 export WORKON_HOME=$HOME/VirtualEnvs
 export PROJECT_HOME=$HOME/Devel
-<<<<<<< HEAD
 source /usr/local/bin/virtualenvwrapper.sh
-=======
-source /usr/bin/virtualenvwrapper.sh
->>>>>>> bfa67d50bec8d27c70069dcb144cf72c1ff3a1d4
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/test/tools/google-cloud-sdk/path.zsh.inc' ]; then source '/home/test/tools/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/test/tools/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/test/tools/google-cloud-sdk/completion.zsh.inc'; fi
-<<<<<<< HEAD
 
 source ~/bin/quandl-env.sh
-=======
->>>>>>> bfa67d50bec8d27c70069dcb144cf72c1ff3a1d4

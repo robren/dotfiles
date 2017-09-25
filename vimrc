@@ -182,7 +182,8 @@ nmap <silent> <leader>ct :cs  find t <C-R>=expand("<cword>")<CR><CR>
 nmap <silent> <leader>ce :cs  find e <C-R>=expand("<cword>")<CR><CR>	
 nmap <silent> <leader>cf :cs  find f <C-R>=expand("<cfile>")<CR><CR>	
 nmap <silent> <leader>ci :cs  find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
-nmap <silent> <leader>cd :cs  find d <C-R>=expand("<cword>")<CR><CR>	
+" This leader cd is used to change diretory to that of the open buffer
+"nmap <silent> <leader>cd :cs  find d <C-R>=expand("<cword>")<CR><CR>	
 
 " }}} 
 
@@ -278,8 +279,8 @@ set complete=.,w,b,u,t,i,kspell
 
 vnoremap <C-c> "*y
 
-autocmd Filetype java set makeprg=javac-algs4\ %
-set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+"autocmd Filetype java set makeprg=javac-algs4\ %
+"set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 
 set tabstop=4
 " paste mode is usefull for .. pasting text, But has some side efeects:

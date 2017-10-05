@@ -10,7 +10,8 @@ if has('gui_running')
   " Maximize gvim window.
   set lines=999 columns=999
 else
-  :colorscheme morning
+  ":colorscheme morning
+  :colorscheme desert
   " On the mac these are at /usr/share/vim/vim73/colors
   " TODO figure out how to install local version
   ":colorscheme jellybeans
@@ -300,3 +301,5 @@ set wildmenu
 " there is only one tab open
 let g:airline#extensions#tabline#enabled = 1
 
+"set shell=/usr/bin/zsh\ -i
+set shell=/usr/bin/zsh

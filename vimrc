@@ -11,7 +11,8 @@ if has('gui_running')
   set lines=999 columns=999
 else
   ":colorscheme morning
-  :colorscheme desert
+  ":colorscheme desert
+  :colorscheme torte
   " On the mac these are at /usr/share/vim/vim73/colors
   " TODO figure out how to install local version
   ":colorscheme jellybeans
@@ -301,5 +302,10 @@ set wildmenu
 " there is only one tab open
 let g:airline#extensions#tabline#enabled = 1
 
-"set shell=/usr/bin/zsh\ -i
-set shell=/usr/bin/zsh
+set shell=/usr/bin/zsh\ -i
+"set shell=/bin/bash 
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+"highlight Search guibg='Purple' guifg='NONE'

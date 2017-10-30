@@ -12,7 +12,7 @@ then
 fi
 
 for i in bash_profile bashrc bash_aliases zsh_aliases zsh zshrc \
-    vimrc vim  tmux.conf  
+    vimrc vim  tmux.conf muttrc  
 do
     if [ -e ~/.$i ]
     then

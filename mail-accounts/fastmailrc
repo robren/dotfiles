@@ -1,0 +1,63 @@
+
+# From http://www.lucianofiandesio.com/getting-started-with-mutt-on-osx
+#set my_server       =   mail.messagingengine.com
+# This is my IMAP server for receiving mail
+set my_server       =   imap.fastmail.com
+
+# This is the smtp server for sending mail
+set my_smtp_server  =   smtp.fastmail.com
+set my_user         =   robrennison@fastmail.com
+
+set record          =   "imaps://$my_server/Sent"
+set postponed       =   "imaps://$my_server/Drafts"
+
+set from            =   "rob@robren.net"
+set realname 		= 	"Rob Rennison"                                  
+
+source "gpg -dq $HOME/passwords/fastmail.gpg |"
+
+# Account - SMTP 
+#set smtp_url = "smtp://$my_user:$my_pass@$my_smtp_server:465"       
+set smtp_url = "smtps://$my_user@$my_smtp_server:465/"       
+set smtp_pass = $my_pass
+set imap_pass = $my_pass
+set imap_user = $my_user
+
+set ssl_force_tls = yes
+set ssl_starttls = no
+
+# Default Inbox
+
+set spoolfile =imaps://$my_server/Inbox
+
+#
+# Default location of mailboxes
+#
+#set folder=imaps://$my_server/INBOX
+
+
+#For passwords, if you want login automatic:
+#smtp_pass=
+#imap_pass=
+
+set sidebar_folder_indent
+set sidebar_indent_string = "  "
+set sidebar_short_path
+set sidebar_delim_chars="/"
+mailboxes = "imaps://$my_server/Inbox"
+mailboxes = "imaps://$my_server/Inbox.Crashplan"
+mailboxes = "imaps://$my_server/Inbox.Tech"
+mailboxes = "imaps://$my_server/Invest"
+mailboxes = "imaps://$my_server/Sales"
+mailboxes = "imaps://$my_server/lkml.newbies"
+mailboxes = "imaps://$my_server/lkml.netdev"
+mailboxes = "imaps://$my_server/lkml.netfilter"
+mailboxes = "imaps://$my_server/lkml.netfilter-devel"
+
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open
+
+set pager_index_lines=10
+
+lists kernelnewbies

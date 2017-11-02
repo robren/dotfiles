@@ -45,6 +45,7 @@ set sidebar_indent_string = "  "
 set sidebar_short_path
 set sidebar_delim_chars="/"
 mailboxes = "imaps://$my_server/Inbox"
+mailboxes = "imaps://$my_server/Drafts"
 mailboxes = "imaps://$my_server/Inbox.Crashplan"
 mailboxes = "imaps://$my_server/Inbox.Tech"
 mailboxes = "imaps://$my_server/Invest"

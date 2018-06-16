@@ -122,3 +122,5 @@ if [ -f '/home/test/tools/google-cloud-sdk/path.zsh.inc' ]; then source '/home/t
 if [ -f '/home/test/tools/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/test/tools/google-cloud-sdk/completion.zsh.inc'; fi
 
 source ~/bin/quandl-env.sh
+
+alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'

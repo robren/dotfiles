@@ -1,6 +1,4 @@
 
-DROPBOX='/media/d/Users/rob/Dropbox'
-
 # User specific aliases and functions
 alias new='ls -lat |head'
 alias st2='sublime'
@@ -18,11 +16,12 @@ alias ..='cd ..'
 alias p='pushd'
 alias o='popd'
 alias golearn='cd $HOME/codelearn/'
-alias godropbox='cd $DROPBOX/'
-alias gobooks='cd $DROPBOX/Books/'
-alias gonotes='cd $HOME/Dropbox/Notes/'
+alias godropbox='cd $HOME/Dropbox/'
+alias gonotes='cd $HOME/Dropbox/notes/'
 alias goblog='cd $HOME/Blog/'
 alias gogo='cd $GOPATH'
+alias goq='cd $HOME/Devel/quandl_fund_xlsx/'
+alias goqout='cd $HOME/Dropbox/quandl_fund_xlsx_output/'
 
 alias g='mvim --remote-silent'
 

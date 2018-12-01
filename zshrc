@@ -6,8 +6,8 @@ export GOPATH=$HOME/code/go
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 #ZSH_THEME="ys"
 #ZSH_THEME="frisk"
 #ZSH_THEME="cypher"
@@ -55,7 +55,7 @@ ZSH_THEME="robbyrussell"
 # Added since the  zshvirtualenvwrapper and virtual env were not working
 
 #echo "sourcing the virtualenvwrapper"
-#source /usr/local/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 #plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
 plugins=(git docker docker-compose go safe-paste)
 
@@ -64,9 +64,9 @@ TEXBINPATH="/usr/local/texlive/2017/bin/x86_64-linux"
 TEXMANPATH="/usr/local/texlive/2017/texmf-dist/doc/man"
 TEXINFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info"
 
-
+PYTHONLOCALPATH="$HOME/.local/bin"
 #export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$HOME/algs4/bin"
-export PATH="$PATH:$HOME/bin:$TEXBINPATH"
+export PATH="$PATH:$HOME/bin:$PYTHONLOCALPATH:$TEXBINPATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH="$MANPATH:$TEXMANPATH"
 export INFOPATH="$INFOPATH:$TEXINFOPATH"
@@ -113,7 +113,8 @@ fi
 
 export WORKON_HOME=$HOME/VirtualEnvs
 export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+#TODO insstall
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/test/tools/google-cloud-sdk/path.zsh.inc' ]; then source '/home/test/tools/google-cloud-sdk/path.zsh.inc'; fi
@@ -122,5 +123,7 @@ if [ -f '/home/test/tools/google-cloud-sdk/path.zsh.inc' ]; then source '/home/t
 if [ -f '/home/test/tools/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/test/tools/google-cloud-sdk/completion.zsh.inc'; fi
 
 source ~/bin/quandl-env.sh
+source ~/bin/alpha-vantage-env.sh
+source ~/bin/tiingo-env.sh
 
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'

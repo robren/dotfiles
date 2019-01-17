@@ -1,14 +1,17 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export GOPATH=$HOME/code/go
+
+# This is the default location
+export GOPATH=$HOME/go
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+#ZSH_THEME="af-magic"
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
-#ZSH_THEME="ys"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="avit"
 #ZSH_THEME="frisk"
 #ZSH_THEME="cypher"
 #ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -66,7 +69,7 @@ TEXINFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info"
 
 PYTHONLOCALPATH="$HOME/.local/bin"
 #export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$HOME/algs4/bin"
-export PATH="$PATH:$HOME/bin:$PYTHONLOCALPATH:$TEXBINPATH"
+export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin:$HOME/bin:$PYTHONLOCALPATH:$TEXBINPATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH="$MANPATH:$TEXMANPATH"
 export INFOPATH="$INFOPATH:$TEXINFOPATH"

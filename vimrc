@@ -30,7 +30,8 @@ syntax on
 " Turn on spelling
 "set spell spelllang=en_us
 "setlocal spell spelllang=en_us  
-autocmd FileType text  setlocal spell spelllang=en_us  
+"Coommented out this being on by default
+"autocmd FileType text  setlocal spell spelllang=en_us  
 "highlight clear SpellBad
 "highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline gui=underline
 

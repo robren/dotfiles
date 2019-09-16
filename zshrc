@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+
 # This is the default location
 export GOPATH=$HOME/go
 
@@ -15,6 +16,8 @@ export GOPATH=$HOME/go
 #ZSH_THEME="frisk"
 #ZSH_THEME="cypher"
 #ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="robbyrussell"
+#
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -56,10 +59,11 @@ export GOPATH=$HOME/go
 #plugins=(git)
 
 # Added since the  zshvirtualenvwrapper and virtual env were not working
-
 #echo "sourcing the virtualenvwrapper"
-source /usr/bin/virtualenvwrapper.sh
+#source /usr/bin/virtualenvwrapper.sh
+#
 #plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
+
 plugins=(git docker docker-compose go safe-paste)
 
 # User configuration
@@ -114,9 +118,8 @@ if [ "$TERM" = "xterm" ] ; then
     export TERM=xterm-256color 
 fi
 
-export WORKON_HOME=$HOME/VirtualEnvs
-export PROJECT_HOME=$HOME/Devel
-#TODO insstall
+#export WORKON_HOME=$HOME/VirtualEnvs
+#export PROJECT_HOME=$HOME/Devel
 #source /usr/local/bin/virtualenvwrapper.sh
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -130,3 +133,12 @@ source ~/bin/alpha-vantage-env.sh
 source ~/bin/tiingo-env.sh
 
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setting fd as the default source for fzf
+# export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

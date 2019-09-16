@@ -17,11 +17,11 @@ alias p='pushd'
 alias o='popd'
 alias golearn='cd $HOME/codelearn/'
 alias godropbox='cd $HOME/Dropbox/'
-alias gonotes='cd $HOME/Dropbox/notes/'
+alias gonotes='cd $HOME/OneDrive/notes/'
 alias goblog='cd $HOME/Blog/'
 alias gogo='cd $GOPATH'
 alias goq='cd $HOME/Dropbox/my-tools/quandl_fund_xlsx_output/'
-alias goqout='cd $HOME/Dropbox/quandl_fund_xlsx_output/'
+alias godev='cd $HOME/Devel/'
 
 alias g='mvim --remote-silent'
 

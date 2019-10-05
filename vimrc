@@ -11,8 +11,8 @@ if has('gui_running')
   set lines=999 columns=999
 else
   ":colorscheme morning
-  ":colorscheme desert
-  :colorscheme torte
+  :colorscheme desert
+  ":colorscheme torte
   " On the mac these are at /usr/share/vim/vim73/colors
   " TODO figure out how to install local version
   ":colorscheme jellybeans
@@ -29,9 +29,9 @@ syntax on
 
 " Turn on spelling
 "set spell spelllang=en_us
-"setlocal spell spelllang=en_us  
+"setlocal spell spelllang=en_us
 "Coommented out this being on by default
-"autocmd FileType text  setlocal spell spelllang=en_us  
+"autocmd FileType text  setlocal spell spelllang=en_us
 "highlight clear SpellBad
 "highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline gui=underline
 
@@ -41,13 +41,13 @@ syntax on
 " would need to make it filetype
 " dependent
 set autoindent " lines up text under previous column on new line
-set fo+=2n " the n is for numbered lists 
+set fo+=2n " the n is for numbered lists
 set tw=78
 
 " Treat all numerals as decimals (vs the default of Octal if padding zeros)
-set nrformats=     	
+set nrformats=
 
-set shiftwidth=4 softtabstop=4 expandtab 
+set shiftwidth=4 softtabstop=4 expandtab
 
 " Don't update the display while executing macros
 set lazyredraw
@@ -132,7 +132,7 @@ map <silent> <leader>w <C-w><C-w>
 nmap <silent> <leader>a :tab split <CR> :Ack --type=cc "" <Left>
 
 "Run Ack in word under cursor"
-nmap <silent> <leader>A :tab split <CR> :Ack  --type=cc  <C-r><C-w><CR> 
+nmap <silent> <leader>A :tab split <CR> :Ack  --type=cc  <C-r><C-w><CR>
 
 "
 " Set the status line the way Derek foo liked it
@@ -146,7 +146,7 @@ set laststatus=2
 " Rob this one seems better than the derek 'p
 set pastetoggle=<F2>
 
-" }}} 
+" }}}
 
 " Stuff for tags {{{1
 " http://vim.wikia.com/wiki/Browsing_programs_with_tags
@@ -156,7 +156,7 @@ nmap <silent> <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 nmap <silent> <leader>sv :so $MYVIMRC<cr>
 
-" Stuff for cscope 
+" Stuff for cscope
 "
 " The following maps all invoke one of the following cscope search types:
 "
@@ -169,26 +169,26 @@ nmap <silent> <leader>sv :so $MYVIMRC<cr>
 "   'i'   includes: find files that include the filename under cursor
 "   'd'   called: find functions that function under cursor calls
 
-"nmap <silent> <leader>cs :vert scs find s <C-R>=expand("<cword>")<CR><CR>	
-"nmap <silent> <leader>cg :vert scs find g <C-R>=expand("<cword>")<CR><CR>	
-"nmap <silent> <leader>cc :vert scs find c <C-R>=expand("<cword>")<CR><CR>	
-"nmap <silent> <leader>ct :vert scs find t <C-R>=expand("<cword>")<CR><CR>	
-"nmap <silent> <leader>ce :vert scs find e <C-R>=expand("<cword>")<CR><CR>	
-"nmap <silent> <leader>cf :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
-"nmap <silent> <leader>ci :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
-"nmap <silent> <leader>cd :vert scs find d <C-R>=expand("<cword>")<CR><CR>	
+"nmap <silent> <leader>cs :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+"nmap <silent> <leader>cg :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+"nmap <silent> <leader>cc :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+"nmap <silent> <leader>ct :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+"nmap <silent> <leader>ce :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+"nmap <silent> <leader>cf :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+"nmap <silent> <leader>ci :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+"nmap <silent> <leader>cd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
-nmap <silent> <leader>cs  :cs find s <C-R>=expand("<cword>")<CR><CR>	
-nmap <silent> <leader>cg  :cs find g <C-R>=expand("<cword>")<CR><CR>	
-nmap <silent> <leader>cc  :cs find c <C-R>=expand("<cword>")<CR><CR>	
-nmap <silent> <leader>ct :cs  find t <C-R>=expand("<cword>")<CR><CR>	
-nmap <silent> <leader>ce :cs  find e <C-R>=expand("<cword>")<CR><CR>	
-nmap <silent> <leader>cf :cs  find f <C-R>=expand("<cfile>")<CR><CR>	
-nmap <silent> <leader>ci :cs  find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
+nmap <silent> <leader>cs  :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <leader>cg  :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <leader>cc  :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <leader>ct :cs  find t <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <leader>ce :cs  find e <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <leader>cf :cs  find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <silent> <leader>ci :cs  find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 " This leader cd is used to change diretory to that of the open buffer
-"nmap <silent> <leader>cd :cs  find d <C-R>=expand("<cword>")<CR><CR>	
+"nmap <silent> <leader>cd :cs  find d <C-R>=expand("<cword>")<CR><CR>
 
-" }}} 
+" }}}
 
 " Stuff for faster buffer movement
 nnoremap <silent> [b :bprevious<CR>
@@ -204,7 +204,7 @@ vmap Q gq
 nmap Q gqap
 map <silent> <leader>c :lcd %:p:h<CR>
 map <silent> <leader>C :cd %:p:h<CR>
- 
+
 
 " From Destroy All Software screencast
 "
@@ -214,7 +214,7 @@ map <silent> <leader>C :cd %:p:h<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Equivalent to :b# but much faster.
-" Goes to ast buffer, This acts screwy whn we use Nerdtree since the 
+" Goes to ast buffer, This acts screwy whn we use Nerdtree since the
 " Nerdtree pane is a nw buffer so we end up going back to the  Nerdree pane
 " Hence my [b and ]b keymaps can be more useful or the bufergator
 " plugin which I've installed, leader b is the way to invoke this.
@@ -234,15 +234,15 @@ let g:CommandTMaxFiles=100000
 
 "call ucompleteme#Setup()
 
-filetype plugin on 	
+filetype plugin on
 filetype indent on
 autocmd FileType make   set noexpandtab
 autocmd FileType html   setlocal shiftwidth=2 tabstop=2
 autocmd FileType xml    setlocal shiftwidth=2 tabstop=2
 autocmd FileType docbk  setlocal shiftwidth=2 tabstop=2
-autocmd FileType python   setlocal shiftwidth=4 tabstop=4 expandtab 
-autocmd FileType docbk  syntax spell toplevel 
- 
+autocmd FileType python   setlocal shiftwidth=4 tabstop=4 expandtab
+autocmd FileType docbk  syntax spell toplevel
+
 "noremap <Space> @q
 
 set foldmethod=syntax
@@ -255,19 +255,19 @@ nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
 
 "Make editing notes easy
-nnoremap <leader>n :e ~/Dropbox/Notes
+nnoremap <leader>n :e ~/OneDrive/notes/
 
 if $TMUX == ''
     set clipboard=unnamed
 endif
 
-" Make folding off by default no more zR 
+" Make folding off by default no more zR
 set nofoldenable
 
-"The defaults were not working, then they were so 
+"The defaults were not working, then they were so
 "Should avoid the smarty pants incomprehensible mechanism and start from the
 "cwd
-let g:ctrlp_working_path_mode = 0 
+let g:ctrlp_working_path_mode = 0
 '
 function! s:setupMarkup()
   nnoremap <leader>p :silent !open -a "Marked 2.app" '%:p'<cr>
@@ -292,7 +292,7 @@ set tabstop=4
 " If ve've used paste then :set nopaste will be needed in same editor session
 " set paste
 
-" using the abbreviation command to allow dts to be expanded  inline to insert the date and time 
+" using the abbreviation command to allow dts to be expanded  inline to insert the date and time
 " debug me abbreviations not working
 iab <expr> dts strftime("%c")
 
@@ -304,9 +304,14 @@ set wildmenu
 let g:airline#extensions#tabline#enabled = 1
 
 set shell=/usr/bin/zsh\ -i
-"set shell=/bin/bash 
+"set shell=/bin/bash
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 "highlight Search guibg='Purple' guifg='NONE'
+
+" When we wish to remove trailing whitespace upon writing a file
+" Leaving off by default since It could remove trailing whitepsace from
+" multiline strings in python
+"autocmd BufWritePre * :%s/\s\+$//e

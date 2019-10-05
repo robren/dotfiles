@@ -20,7 +20,7 @@ alias godropbox='cd $HOME/Dropbox/'
 alias gonotes='cd $HOME/OneDrive/notes/'
 alias goblog='cd $HOME/Blog/'
 alias gogo='cd $GOPATH'
-alias goq='cd $HOME/Dropbox/my-tools/quandl_fund_xlsx_output/'
+alias goq='cd $HOME/OneDrive/Personal-Finance/My-Quandl-Analysis'
 alias godev='cd $HOME/Devel/'
 
 alias g='mvim --remote-silent'

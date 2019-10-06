@@ -17,24 +17,8 @@ else
   " TODO figure out how to install local version
   ":colorscheme jellybeans
 endif
-"  " This is console Vim.
-"  if exists("+lines")
-"    set lines=50
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
-" Turn on the syntax highlighting
+
 syntax on
-
-" Turn on spelling
-"set spell spelllang=en_us
-"setlocal spell spelllang=en_us
-"Coommented out this being on by default
-"autocmd FileType text  setlocal spell spelllang=en_us
-"highlight clear SpellBad
-"highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline gui=underline
-
 
 " Make text lists properly auto format.
 " if this gives trouble in code then
@@ -47,6 +31,7 @@ set tw=78
 " Treat all numerals as decimals (vs the default of Octal if padding zeros)
 set nrformats=
 
+" TODO comment
 set shiftwidth=4 softtabstop=4 expandtab
 
 " Don't update the display while executing macros
@@ -57,7 +42,6 @@ set showmode
 
 " most basic settings
 " this from "How I boosted my vim"
-
 set nowrap        " don't wrap lines
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
@@ -105,7 +89,6 @@ let mapleader = ","
 " Toggle spelling on and off
 nmap <silent> <leader>s :set spell!<CR>
 
-
 " Don't be required to save when opening new file
 set hidden
 
@@ -120,15 +103,20 @@ nmap <silent> <leader>sv :so $MYVIMRC<cr>
 
 " Rob: Ok so lets extend to make easy to edit bashrc
 " 'e'dit 'b'ashrc)
-nmap <silent> ,eb :e ~/.bashrc<cr>
+nmap <silent> <leader>eb :e ~/.bashrc<cr>
+
+" Rob: Ok so lets extend to make easy to edit zshrc
+" 'e'dit 'z'shrc)
+nmap <silent> <leader>ez :e ~/.zshrc<cr>
 
 " For editing my abolish terms
-nmap <silent> ,ea :e ~/.vim/after/plugin/abolish.vim<cr>
+nmap <silent> <leader>ea :e ~/.vim/after/plugin/abolish.vim<cr>
 
 "My own mapping for changing windows
 map <silent> <leader>w <C-w><C-w>
 
 "Run Ack in a new tab"
+" TODO standardise on which search helper to use
 nmap <silent> <leader>a :tab split <CR> :Ack --type=cc "" <Left>
 
 "Run Ack in word under cursor"
@@ -152,9 +140,8 @@ set pastetoggle=<F2>
 " http://vim.wikia.com/wiki/Browsing_programs_with_tags
 set tags=./tags;
 
+" Change the current working directory to that of the currently open file
 nmap <silent> <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-nmap <silent> <leader>sv :so $MYVIMRC<cr>
 
 " Stuff for cscope
 "
@@ -185,9 +172,6 @@ nmap <silent> <leader>ct :cs  find t <C-R>=expand("<cword>")<CR><CR>
 nmap <silent> <leader>ce :cs  find e <C-R>=expand("<cword>")<CR><CR>
 nmap <silent> <leader>cf :cs  find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <silent> <leader>ci :cs  find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-" This leader cd is used to change diretory to that of the open buffer
-"nmap <silent> <leader>cd :cs  find d <C-R>=expand("<cword>")<CR><CR>
-
 " }}}
 
 " Stuff for faster buffer movement
@@ -195,9 +179,6 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-
-" Stuff for expanding the active file directory
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 let g:LatexBox_Folding = 1
 vmap Q gq
@@ -221,21 +202,40 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 map ,, <C-^>
 
+" vim-plug stuff
+" Got rid of pathogen in favor of vim-plug
+" Automatically install if not already installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Got rid of the confusing vundle bundle crap
-" Now using pathogen.
-" One goes to the bundle directory and git clones whatever bundle it is
-" directly in there. Nothing else to do!!
-" https://github.com/tpope/vim-pathogen
-"
-execute pathogen#infect()
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+"   I can purge my old plugin directory
+call plug#begin('~/.vim/plugged')
 
-let g:CommandTMaxFiles=100000
+" Make sure you use single quotes
 
+" Shorthand notation; fetches https://github.com/scrooloose/nerdtree
+" Note: Need to run :PlugInstall after we add a new Plug command. This will
+" download the plugin
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-abolish'
+Plug 'vim-airline/vim-airline'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'jeetsukumaran/vim-buffergator'
+
+" Initialize plugin system
+call plug#end()
+
+
+" TODO experiment with ucomplete me. Need to add the package first though
 "call ucompleteme#Setup()
 
-filetype plugin on
-filetype indent on
+"filetype plugin on
+"filetype indent on
 autocmd FileType make   set noexpandtab
 autocmd FileType html   setlocal shiftwidth=2 tabstop=2
 autocmd FileType xml    setlocal shiftwidth=2 tabstop=2
@@ -308,8 +308,6 @@ set shell=/usr/bin/zsh\ -i
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-
-"highlight Search guibg='Purple' guifg='NONE'
 
 " When we wish to remove trailing whitespace upon writing a file
 " Leaving off by default since It could remove trailing whitepsace from

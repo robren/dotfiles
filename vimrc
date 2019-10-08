@@ -2,20 +2,27 @@
 " Preferences {{{
 " Do not try to be compatible with vi
 set nocompatible
+set rtp+=~/.vim/plugged/vim-colors-solarized
+set rtp+=~/.vim/plugged/base16-vim
+"set t_Co=256
+let g:solarized_termcolors=16
+let g:solarized_contrast="high"
 
 if has('gui_running')
   set guifont=Monaco:h16
-  :colorscheme desert
+  ":colorscheme desert
+  :colorscheme solarized
   " GUI is running or is about to start.
   " Maximize gvim window.
   set lines=999 columns=999
 else
   ":colorscheme morning
-  :colorscheme desert
-  ":colorscheme torte
+  ":colorscheme solarized
   " On the mac these are at /usr/share/vim/vim73/colors
-  " TODO figure out how to install local version
-  ":colorscheme jellybeans
+  syntax enable
+  "set background=light
+  "colorscheme solarized
+  colorscheme base16-default-dark
 endif
 
 syntax on
@@ -226,8 +233,15 @@ Plug 'tpope/vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+" Clears the search highlight after a move
+Plug 'haya14busa/is.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 
 " Initialize plugin system
+let g:CommandTMaxFiles=100000
 call plug#end()
 
 
@@ -303,7 +317,7 @@ set wildmenu
 " there is only one tab open
 let g:airline#extensions#tabline#enabled = 1
 
-set shell=/usr/bin/zsh\ -i
+set shell=/usr/local/bin/zsh\ -i
 "set shell=/bin/bash
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
@@ -313,3 +327,5 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " Leaving off by default since It could remove trailing whitepsace from
 " multiline strings in python
 "autocmd BufWritePre * :%s/\s\+$//e
+"
+

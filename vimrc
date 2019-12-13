@@ -2,35 +2,44 @@
 " Preferences {{{
 " Do not try to be compatible with vi
 set nocompatible
-set rtp+=~/.vim/plugged/vim-colors-solarized
-set rtp+=~/.vim/plugged/base16-vim
+"rtp is the vim runtime path. Which we need to add to if using custom color
+"schemes
+"set rtp+=~/.vim/plugged/vim-colors-solarized
+"set rtp+=~/.vim/plugged/base16-vim
+"set rtp+=~/.vim/plugged/seoul256.vim
 "set t_Co=256
 let g:solarized_termcolors=16
 let g:solarized_contrast="high"
 
 if has('gui_running')
   set guifont=Monaco:h16
-  ":colorscheme desert
+  " Solarized works well in the gui but nooks horrible in
+  " the terminal, despite loads oh fiddling
   :colorscheme solarized
   " GUI is running or is about to start.
   " Maximize gvim window.
   set lines=999 columns=999
 else
-  ":colorscheme morning
-  ":colorscheme solarized
-  " On the mac these are at /usr/share/vim/vim73/colors
-  syntax enable
-  "set background=light
-  "colorscheme solarized
-  colorscheme base16-default-dark
+  " It's a nightmare setting these in the terminal since how they look depends on
+  " what we've got the terminal set to.
+
+  " industry looks good with the iterm2 colorscheme set to tango-dark-colors
+  " it's contrasty but not in a garish way
+  colorscheme industry "This is included with vim8
+  " On the mac these are at /usr/share/vim/vim81colors for the defaults
+  " Some were installed as packages using the plug extension
+  " These are under ~.vim/plugged
+  " If adding custom extensions make sure to add to the rtp path, see above
+  "colorscheme seoul256 " low contrast one from junegunn
+  "colorscheme seoul256-light
+  "colorscheme desert
+  "colorscheme base16-default-dark
 endif
 
 syntax on
 
 " Make text lists properly auto format.
-" if this gives trouble in code then
-" would need to make it filetype
-" dependent
+" if this gives trouble in code then would need to make it filetype dependent
 set autoindent " lines up text under previous column on new line
 set fo+=2n " the n is for numbered lists
 set tw=78
@@ -54,7 +63,7 @@ set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
-set number        " always show line numbers
+" set number        " always show line numbers
 set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
@@ -235,10 +244,14 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/seoul256.vim'
+
 " Clears the search highlight after a move
 Plug 'haya14busa/is.vim'
 Plug 'altercation/vim-colors-solarized'
+" A nice vim colorscheme and also for iterm2 separately
 Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
 
 " Initialize plugin system
 let g:CommandTMaxFiles=100000
@@ -300,10 +313,10 @@ vnoremap <C-c> "*y
 "set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 
 set tabstop=4
-" paste mode is usefull for .. pasting text, But has some side efeects:
+" paste mode is useful for .. pasting text, But has some side effects:
 " It disables abbreviations, resets wrapmargin, autoindent....
 " :he paste
-" If ve've used paste then :set nopaste will be needed in same editor session
+" If you've used paste then :set nopaste will be needed in same editor session
 " set paste
 
 " using the abbreviation command to allow dts to be expanded  inline to insert the date and time
@@ -328,4 +341,12 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " multiline strings in python
 "autocmd BufWritePre * :%s/\s\+$//e
 "
+" From https://vi.stackexchange.com/questions/68/autocorrect-spelling-mistakes
+" Does nto autocorrect but makes fixing easier
+" Go back to last misspelled word and pick first suggestion.
+inoremap <C-L> <C-G>u<Esc>[s1z=`]a<C-G>u
 
+" Select last misspelled word (typing will edit).
+nnoremap <C-K> <Esc>[sve<C-G>
+inoremap <C-K> <Esc>[sve<C-G>
+snoremap <C-K> <Esc>b[sviw<C-G>

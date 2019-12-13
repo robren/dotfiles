@@ -21,7 +21,7 @@ alias gonotes='cd $HOME/OneDrive/notes/'
 alias goblog='cd $HOME/Blog/'
 alias gogo='cd $GOPATH'
 alias goq='cd $HOME/OneDrive/Personal-Finance/My-Quandl-Analysis'
-alias godev='cd $HOME/Devel/'
+alias gocode='cd $HOME/Code/'
 
 alias g='mvim --remote-silent'
 
@@ -41,7 +41,6 @@ alias myip='curl ipinfo.io'
 function docker-rm-all-images() { docker rmi $(docker images| grep "^<none>" | awk '{print $3}') }
 #docker-rm-all-images() { docker rmi (docker images| grep "^<none>" | awk '{print \$3}'); }
 alias t='$HOME/bin/todo.sh -d /home/test/.todo/config'
-
-
+alias dirs='dirs -v'
 
 

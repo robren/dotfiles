@@ -2,6 +2,7 @@
 " Preferences {{{
 " Do not try to be compatible with vi
 set nocompatible
+set viminfo=
 "rtp is the vim runtime path. Which we need to add to if using custom color
 "schemes
 "set rtp+=~/.vim/plugged/vim-colors-solarized
@@ -25,7 +26,7 @@ else
 
   " industry looks good with the iterm2 colorscheme set to tango-dark-colors
   " it's contrasty but not in a garish way
-  colorscheme industry "This is included with vim8
+  :colorscheme industry "This is included with vim8
   " On the mac these are at /usr/share/vim/vim81colors for the defaults
   " Some were installed as packages using the plug extension
   " These are under ~.vim/plugged
@@ -63,7 +64,7 @@ set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
-" set number        " always show line numbers
+set number        " always show line numbers
 set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
@@ -72,7 +73,12 @@ set smartcase     " ignore case if search pattern is all lowercase,
                   "    case-sensitive otherwise
 "set smarttab      " insert tabs on the start of a line according to
                   "    shiftwidth, not tabstop
-set hlsearch      " highlight search terms
+
+                  " highlight search was one of my biggest pains where it
+                  " caused the highlight to obscure what it was we'd found and
+                  " just looked real ugly
+"set hlsearch      " highlight search terms
+set nohlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 
 "Think big settings
@@ -330,8 +336,8 @@ set wildmenu
 " there is only one tab open
 let g:airline#extensions#tabline#enabled = 1
 
-set shell=/usr/local/bin/zsh\ -i
-"set shell=/bin/bash
+" set shell=/usr/local/bin/zsh\ -i
+set shell=/bin/bash
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
@@ -350,3 +356,4 @@ inoremap <C-L> <C-G>u<Esc>[s1z=`]a<C-G>u
 nnoremap <C-K> <Esc>[sve<C-G>
 inoremap <C-K> <Esc>[sve<C-G>
 snoremap <C-K> <Esc>b[sviw<C-G>
+

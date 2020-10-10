@@ -1,6 +1,6 @@
 
 # User specific aliases and functions
-alias new='ls -lat |head'
+alias new='ls -lath |head'
 alias st2='sublime'
 # set -o vi   # Vi line editing mode
 alias m='/Users/rob/bin/mvim --remote-silent'
@@ -16,7 +16,7 @@ alias ..='cd ..'
 alias p='pushd'
 alias o='popd'
 alias golearn='cd $HOME/codelearn/'
-alias godropbox='cd $HOME/Dropbox/'
+alias gopybook='cd $HOME/codelearn/data-structs-algos-in-python'
 alias gonotes='cd $HOME/OneDrive/notes/'
 alias goblog='cd $HOME/Blog/'
 alias gogo='cd $GOPATH'
@@ -42,5 +42,3 @@ function docker-rm-all-images() { docker rmi $(docker images| grep "^<none>" | a
 #docker-rm-all-images() { docker rmi (docker images| grep "^<none>" | awk '{print \$3}'); }
 alias t='$HOME/bin/todo.sh -d /home/test/.todo/config'
 alias dirs='dirs -v'
-
-

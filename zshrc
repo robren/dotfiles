@@ -2,8 +2,6 @@
 export ZSH=$HOME/.oh-my-zsh
 
 
-# This is the default location
-export GOPATH=$HOME/go
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
@@ -20,17 +18,12 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 ZSH_THEME="robbyrussell"
 #
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -60,37 +53,19 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
 
-# Added since the  zshvirtualenvwrapper and virtual env were not working
-#echo "sourcing the virtualenvwrapper"
-#source /usr/bin/virtualenvwrapper.sh
-#
-#plugins=(git docker docker-compose,virtualenv,virtualenvwrapper,go)
-
 plugins=(git docker docker-compose go safe-paste)
 
 # User configuration
-TEXBINPATH="/usr/local/texlive/2017/bin/x86_64-linux"
-TEXMANPATH="/usr/local/texlive/2017/texmf-dist/doc/man"
-TEXINFOPATH="/usr/local/texlive/2017/texmf-dist/doc/info"
 
-PYTHONLOCALPATH="$HOME/.local/bin"
-#export PATH="$PATH:/usr/local/go/bin:$HOME/bin:$HOME/algs4/bin"
-export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin:$HOME/bin:$PYTHONLOCALPATH:$TEXBINPATH"
-# export MANPATH="/usr/local/man:$MANPATH"
+TEXMANPATH="/usr/local/texlive/2019/texmf-dist/doc/man"
+TEXINFOPATH="/usr/local/texlive/2019/texmf-dist/doc/info"
+
 export MANPATH="$MANPATH:$TEXMANPATH"
-export INFOPATH="$INFOPATH:$TEXINFOPATH"
+# This caused problems with emacs. This overrode the correctly set values 
+# in the variable info-default-directory-list
+# export INFOPATH="$INFOPATH:$TEXINFOPATH:"
 
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -117,7 +92,7 @@ fi
 
 #export TERM=screen-256color
 if [ "$TERM" = "xterm" ] ; then
-    export TERM=xterm-256color 
+    export TERM=xterm-256color
 fi
 
 #export WORKON_HOME=$HOME/VirtualEnvs
@@ -136,6 +111,9 @@ source ~/bin/tiingo-env.sh
 
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
 
+export EDITOR=emacs
+
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Setting fd as the default source for fzf
@@ -148,3 +126,5 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Needed to fix a problem where pip was aborting due to some problem with
 # an encryption library after a recent MACOS update.
 export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
+
+eval "$(pyenv init -)"

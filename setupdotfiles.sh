@@ -11,7 +11,7 @@ then
     mv ~/.bashrc ~/.bashrc.old
 fi
 
-for i in bash_profile bashrc bash_aliases zsh_aliases zsh zshrc \
+for i in bash_profile bashrc bash_aliases zsh_aliases zsh zshrc zshenv \
     vimrc vim  tmux.conf muttrc  
 do
     if [ -e ~/.$i ]

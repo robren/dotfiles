@@ -111,7 +111,7 @@ source ~/bin/tiingo-env.sh
 
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
 
-export EDITOR=emacs
+export EDITOR=nvim
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

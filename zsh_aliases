@@ -28,7 +28,6 @@ alias g='mvim --remote-silent'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-export EDITOR=vim
 
 alias gl='git log --oneline --all --decorate --graph'
 alias docker-kill-all='docker kill $(docker ps -q)'

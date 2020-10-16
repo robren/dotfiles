@@ -2,7 +2,8 @@
 " Preferences {{{
 " Do not try to be compatible with vi
 set nocompatible
-set viminfo=
+" Need the viminfo for marks to be saves. Otherwise set to null
+"set viminfo=
 "rtp is the vim runtime path. Which we need to add to if using custom color
 "schemes
 "set rtp+=~/.vim/plugged/vim-colors-solarized
@@ -48,8 +49,10 @@ set tw=78
 " Treat all numerals as decimals (vs the default of Octal if padding zeros)
 set nrformats=
 
-" TODO comment
-set shiftwidth=4 softtabstop=4 expandtab
+" how many spaces a tab will be
+set softtabstop=4
+" convert tabs to spaces
+set expandtab
 
 " Don't update the display while executing macros
 set lazyredraw
@@ -74,11 +77,10 @@ set smartcase     " ignore case if search pattern is all lowercase,
 "set smarttab      " insert tabs on the start of a line according to
                   "    shiftwidth, not tabstop
 
-                  " highlight search was one of my biggest pains where it
+"set hlsearch      " highlight search terms
+set nohlsearch    " highlight search was one of my biggest pains;  where it
                   " caused the highlight to obscure what it was we'd found and
                   " just looked real ugly
-"set hlsearch      " highlight search terms
-set nohlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 
 "Think big settings
@@ -94,6 +96,9 @@ set backupdir=~/.vimbackups
 " set nobackup
 set noswapfile
 
+" From reddit
+set wildmode=list:longest " make tab completion (e.g. when doing :e fo<tab>) like bash (list all available completions)
+set path+=**              " allow recursive working dir searching with :find
 
 " mappings {{{1
 """""""""""""""""""""""""""""""""
@@ -144,6 +149,8 @@ nmap <silent> <leader>a :tab split <CR> :Ack --type=cc "" <Left>
 "Run Ack in word under cursor"
 nmap <silent> <leader>A :tab split <CR> :Ack  --type=cc  <C-r><C-w><CR>
 
+" Run NERDTree shortcut
+map <C-n> :NERDTreeToggle<CR>
 "
 " Set the status line the way Derek foo liked it
 set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
@@ -249,8 +256,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/seoul256.vim'
+Plug 'mileszs/ack.vim'
+Plug 'pechorin/any-jump.vim'
+Plug 'natebosch/vim-lsc'
+Plug 'ajh17/VimCompletesMe'
+
 
 " Clears the search highlight after a move
 Plug 'haya14busa/is.vim'
@@ -266,9 +279,24 @@ call plug#end()
 
 " TODO experiment with ucomplete me. Need to add the package first though
 "call ucompleteme#Setup()
+let g:lsc_server_commands = {'python': 'pyls'}
 
-"filetype plugin on
-"filetype indent on
+let g:lsc_auto_map = {
+ \  'GoToDefinition': 'gd',
+ \  'FindReferences': 'gr',
+ \  'Rename': 'gR',
+ \  'ShowHover': 'K',
+ \  'FindCodeActions': 'ga',
+ \  'Completion': 'omnifunc',
+ \}
+let g:lsc_enable_autocomplete  = v:true
+let g:lsc_enable_diagnostics   = v:false
+let g:lsc_reference_highlights = v:false
+let g:lsc_trace_level          = 'off'
+
+
+filetype plugin on
+filetype indent on
 autocmd FileType make   set noexpandtab
 autocmd FileType html   setlocal shiftwidth=2 tabstop=2
 autocmd FileType xml    setlocal shiftwidth=2 tabstop=2
@@ -280,9 +308,6 @@ autocmd FileType docbk  syntax spell toplevel
 
 set foldmethod=syntax
 let g:LatexBox_Folding = 1
-"map <leader>f :FufFile \*\*\/<CR>
-map <leader>f :FufFile <CR>
-map <silent> <leader>ff :FufFile $HOME/Dropbox/Notes<CR>
 
 nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
@@ -340,20 +365,42 @@ let g:airline#extensions#tabline#enabled = 1
 set shell=/bin/bash
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" Was colliging with the window movement shortcut
+"nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " When we wish to remove trailing whitespace upon writing a file
 " Leaving off by default since It could remove trailing whitepsace from
 " multiline strings in python
 "autocmd BufWritePre * :%s/\s\+$//e
-"
-" From https://vi.stackexchange.com/questions/68/autocorrect-spelling-mistakes
-" Does nto autocorrect but makes fixing easier
-" Go back to last misspelled word and pick first suggestion.
-inoremap <C-L> <C-G>u<Esc>[s1z=`]a<C-G>u
+"To make vim open NERDTree on opening.
+"autocmd vimenter * NERDTree
 
-" Select last misspelled word (typing will edit).
-nnoremap <C-K> <Esc>[sve<C-G>
-inoremap <C-K> <Esc>[sve<C-G>
-snoremap <C-K> <Esc>b[sviw<C-G>
+" From https://www.freecodecamp.org/news/how-to-search-project-wide-vim-ripgrep-ack/
+" This looks really good
+" ack.vim --- {{{
+
+" Use ripgrep for searching ⚡️
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+
+" Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+
+" Don't jump to first match
+cnoreabbrev Ack Ack!
+
+" Maps <leader>/ so we're ready to type the search keyword
+nnoremap <Leader>/ :Ack!<Space>
+" }}}
+
+" Navigate quickfix list with ease
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+
 

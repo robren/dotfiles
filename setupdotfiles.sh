@@ -12,9 +12,9 @@ then
 fi
 
 for i in bash_profile bashrc bash_aliases zsh_aliases zsh zshrc zshenv \
-    vimrc vim  tmux.conf muttrc  
+    vimrc vim  tmux.conf muttrc
 do
-    if [ -e ~/.$i ]
+	if [ -e ~/.$i ]
     then
         if [ ! -e ~/olddotfiles ]
         then
@@ -24,7 +24,25 @@ do
     fi
     if [ ! -e ~/.$i ]
     then
+        echo "Creating symlink ~/.$i to $DOTFILES/$i "
         ln -sf $DOTFILES/$i ~/.$i
+    fi
+done
+
+for i in nvim ranger
+do
+	if [ -e ~/.config/$i ]
+    then
+        if [ ! -e ~/olddotfiles ]
+        then
+            mkdir ~/olddotfiles
+        fi
+        mv ~/.config/$i ~/olddotfiles
+    fi
+    if [ ! -e ~/.config/$i ]
+    then
+        echo "Creating symlink ~/.config/$i to $DOTFILES/$i "
+        ln -sf $DOTFILES/$i ~/.config/$i
     fi
 done
 
@@ -37,8 +55,12 @@ fi
 unset GNOME_KEYRING_CONTROL
 
 # Need to pull in the git submodules
-git submodule init
-git submodule update
+# Since we moved to the Plug installer no need for this.
+# git submodule init
+# git submodule update
 
 # clone the Tmux plugin repo
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -e ~/.tmux/plugins ]
+then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi

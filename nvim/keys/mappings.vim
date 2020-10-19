@@ -59,7 +59,7 @@ nmap <silent> <leader>a :tab split <CR> :Ack --type=cc "" <Left>
 nmap <silent> <leader>A :tab split <CR> :Ack  --type=cc  <C-r><C-w><CR>
 
 " Run NERDTree shortcut
-"map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 let g:LatexBox_Folding = 1
 vmap Q gq
@@ -76,8 +76,8 @@ map <silent> <leader>C :cd %:p:h<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Equivalent to :b# but much faster.
-" Goes to ast buffer, This acts screwy whn we use Nerdtree since the
-" Nerdtree pane is a nw buffer so we end up going back to the  Nerdree pane
+" Goes to last buffer, This acts screwy whn we use Nerdtree since the
+" Nerdtree pane is a new buffer so we end up going back to the Nerdree pane
 " Hence my [b and ]b keymaps can be more useful or the bufergator
 " plugin which I've installed, leader b is the way to invoke this.
 

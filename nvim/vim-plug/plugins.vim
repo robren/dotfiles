@@ -12,14 +12,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'sheerun/vim-polyglot'
    
     " File Explorer
-    " Plug 'scrooloose/NERDTree'
-    " Auto pairs for '(' '[' '{'
+    Plug 'scrooloose/NERDTree'
     
     Plug 'jiangmiao/auto-pairs'
     " Fuzzyfile finder
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     " Ack used fzf to find things in files
-    Plug 'mileszs/ack.vim'
+    "Plug 'mileszs/ack.vim'
 
     Plug 'airblade/vim-rooter'
     " Themes
@@ -34,6 +34,4 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     Plug 'mhinz/vim-startify'
 
-    " Ranger
-    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     call plug#end()

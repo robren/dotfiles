@@ -10,18 +10,20 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
-   
+ 
     " File Explorer
     Plug 'scrooloose/NERDTree'
-    
-    Plug 'jiangmiao/auto-pairs'
+ 
+    "Plug 'jiangmiao/auto-pairs'
+
     " Fuzzyfile finder
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    " Ack used fzf to find things in files
-    "Plug 'mileszs/ack.vim'
+    " Ack  uses ripgrep to find things in files
+    Plug 'mileszs/ack.vim'
 
     Plug 'airblade/vim-rooter'
+
     " Themes
     " https://github.com/rafi/awesome-vim-colorschemes for lots more
     Plug 'joshdick/onedark.vim'
@@ -33,5 +35,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-airline/vim-airline'
 
     Plug 'mhinz/vim-startify'
+
+    Plug 'plasticboy/vim-markdown'
+
+    "Plug 'liuchengxu/vim-which-key'
+
+    " Broke coc completion in wiki and in markdown files
+    "    Plug 'vimwiki/vimwiki'
+
+    Plug 'vim-syntastic/syntastic'
+
 
     call plug#end()

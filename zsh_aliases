@@ -41,3 +41,6 @@ function docker-rm-all-images() { docker rmi $(docker images| grep "^<none>" | a
 #docker-rm-all-images() { docker rmi (docker images| grep "^<none>" | awk '{print \$3}'); }
 alias t='$HOME/bin/todo.sh -d /home/test/.todo/config'
 alias dirs='dirs -v'
+
+alias fcd='cd $(fd --type d --exclude bundle --exclude Godeps | fzf)'
+

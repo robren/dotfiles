@@ -43,20 +43,6 @@ cmap w!! w !sudo tee %
 
 set statusline^=%{coc#status()}
 let g:startify_session_dir = '~/.config/nvim/session'
-" From derek wyatt
-" Let's make it easy to edit this file (mnemonic for the key sequence is
-" 'e'dit 'v'imrc)
-nmap <silent> <leader>ev :e $MYVIMRC<cr>
 
-" And to source this file as well (mnemonic for the key sequence is
-" 's'ource 'v'imrc)
-nmap <silent> <leader>sv :so $MYVIMRC<cr>
-
-" Rob: Ok so lets extend to make easy to edit bashrc
-" 'e'dit 'b'ashrc)
-nmap <silent> <leader>eb :e ~/.bashrc<cr>
-
-" Rob: Ok so lets extend to make easy to edit zshrc
-" 'e'dit 'z'shrc)
-nmap <silent> <leader>ez :e ~/.zshrc<cr>
-
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_always_populate_loc_list = 1

@@ -8,9 +8,9 @@
     "yaml",
     "json",
     "python"
-  ],
+  ]
   // python config
-  "python.jediEnabled": false,
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true
+  //  "python.jediEnabled": false,
+  // "python.linting.enabled": true,
+  //"python.linting.pylintEnabled": true
 }

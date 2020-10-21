@@ -33,6 +33,8 @@ let g:startify_bookmarks = [
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'z': '~/.zshrc' },
             \ '~/Codelearn',
+            \ '~/.config/nvim',
+            \ '~/.config/nvim/plug-config',
             \ ]
 
 let g:startify_enable_special = 0

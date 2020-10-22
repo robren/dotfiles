@@ -43,7 +43,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Broke coc completion in wiki and in markdown files
     "    Plug 'vimwiki/vimwiki'
 
-    Plug 'vim-syntastic/syntastic'
+    "Plug 'vim-syntastic/syntastic'
 
 
     call plug#end()

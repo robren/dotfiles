@@ -8,9 +8,14 @@
     "yaml",
     "json",
     "python"
-  ]
+  ],
   // python config
-  //  "python.jediEnabled": false,
-  // "python.linting.enabled": true,
-  //"python.linting.pylintEnabled": true
+  "python.jediEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintUseMinimalCheckers": false,
+  "python.linting.pylintArgs": [
+    "-d",
+    "W0105"
+  ]
 }

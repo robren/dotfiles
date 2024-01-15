@@ -1,42 +1,39 @@
 #!/usr/bin/env bash 
+#
 # Creates a set of symlinks to the dot files in dotfiles dir.
-# clone the dotfiles directory from pobept63 bitbucket hg repo first
-# stick this in ~/bin
+# clone the dotfiles repo from  https://github.com/robren/dotfiles 
+# Execute this script from within the dotfiles directory 
 
 DOTFILES=$PWD
 
 echo " DOTFILES = $DOTFILES "
-if [ -f ~/.bashrc ]
+
+if [ ! -e ~/olddotfiles ]
 then
-    mv ~/.bashrc ~/.bashrc.old
+    mkdir ~/olddotfiles
 fi
 
-for i in bash_profile bashrc bash_aliases zsh_aliases zsh zshrc zshenv \
-    vimrc vim  tmux.conf muttrc
+# Until I'm back to using mutt and ack, comment out
+# muttrc
+# ackrc
+for i in bash_profile bashrc bash_aliases zsh_aliases zsh zshrc \
+    vimrc vim  tmux.conf 
 do
-	if [ -e ~/.$i ]
+	if [ -e ~/.$i ]     # Save the old dotfiles
     then
-        if [ ! -e ~/olddotfiles ]
-        then
-            mkdir ~/olddotfiles
-        fi
         mv ~/.$i ~/olddotfiles
-    fi
-    if [ ! -e ~/.$i ]
+  fi
+  if [ ! -e ~/.$i ]   # Create a symlink to the dotfiles in this repo
     then
         echo "Creating symlink ~/.$i to $DOTFILES/$i "
         ln -sf $DOTFILES/$i ~/.$i
-    fi
+  fi
 done
 
 for i in nvim ranger
 do
 	if [ -e ~/.config/$i ]
     then
-        if [ ! -e ~/olddotfiles ]
-        then
-            mkdir ~/olddotfiles
-        fi
         mv ~/.config/$i ~/olddotfiles
     fi
     if [ ! -e ~/.config/$i ]

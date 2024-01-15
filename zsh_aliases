@@ -1,8 +1,8 @@
 
 # User specific aliases and functions
+
+## Update this with the exa
 alias new='ls -lath |head'
-alias st2='sublime'
-# set -o vi   # Vi line editing mode
 alias m='/Users/rob/bin/mvim --remote-silent'
 #alias m='/Applications/MacVim.app/Contents/MacOS/MacVim'
 alias rm='rm -i'
@@ -12,19 +12,12 @@ alias mv='mv -i'
 alias h='history'
 alias j='jobs -l'
 alias which='type -a'
-alias ..='cd ..'
 alias p='pushd'
 alias o='popd'
-alias golearn='cd $HOME/codelearn/'
-alias gopybook='cd $HOME/codelearn/data-structs-algos-in-python'
-alias gonotes='cd $HOME/OneDrive/notes/'
-alias goblog='cd $HOME/Blog/'
-alias gogo='cd $GOPATH'
-alias goq='cd $HOME/OneDrive/Personal-Finance/My-Quandl-Analysis'
-alias gocode='cd $HOME/Code/'
 
 alias g='mvim --remote-silent'
 
+# theres a ton of oh-my zsh defaulss alias ..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -42,5 +35,4 @@ function docker-rm-all-images() { docker rmi $(docker images| grep "^<none>" | a
 alias t='$HOME/bin/todo.sh -d /home/test/.todo/config'
 alias dirs='dirs -v'
 
-alias fcd='cd $(fd --type d --exclude bundle --exclude Godeps | fzf)'
 

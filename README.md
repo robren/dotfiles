@@ -2,6 +2,11 @@
 
 This contains some of my more useful dotfiles in a folder structure which lends itself to be easily used by a utility called Gnu stow.  The stow utility can be used to create symlinks from both the home directory and other subdirectories e.g ~/.config to configuration files contained here. My previous technique was a custom shell script to create the nexessary sym links.
 
+## Install-notes
+
+This includes details of what to install to get a cool looking prompt yet not have to use something like oh-my-zsh.
+
+
 ## How to populate the dotfiles on a new machine.
 
 This assumes that  stow has been installed

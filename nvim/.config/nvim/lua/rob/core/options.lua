@@ -24,6 +24,8 @@ opt.cursorline = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+opt.colorcolumn = '100'
+opt.scrolloff   = 10
 
 --- backspace
 opt.backspace = "indent,eol,start"
@@ -39,3 +41,5 @@ opt.splitbelow = true
 opt.iskeyword:append("-")
 
 
+-- disable s from entering insert mode RR
+vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = true, silent = true })

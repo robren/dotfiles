@@ -7,7 +7,7 @@ require("rob.core")
 -- require("rob.core.colorscheme")
 -- require("rob.core.keymaps")
 
---- require("rob.lazy")
+require("rob.lazy")
 
 
 

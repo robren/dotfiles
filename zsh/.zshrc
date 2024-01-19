@@ -38,6 +38,7 @@ alias new='exa -la --long --header --color=always --sort=old --git | head -n 20 
 alias tree='exa -T'
 alias h='history'
 alias ..='cd ..'
+alias gst='git status'
 
 # Load and initialise completion system
 autoload -Uz compinit

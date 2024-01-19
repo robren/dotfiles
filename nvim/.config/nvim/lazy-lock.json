@@ -1,0 +1,8 @@
+{
+  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
+  "nvim-tree.lua": { "branch": "master", "commit": "f24afa2cef551122b8bd53bb2e4a7df42343ce2e" },
+  "nvim-web-devicons": { "branch": "master", "commit": "140edfcf25093e8b321d13e154cbce89ee868ca0" },
+  "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
+  "vim-nightfly-guicolors": { "branch": "master", "commit": "0c6e2e88bf15634af94a91fcc2e20e28a09dfecd" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "38b1d0402c4600543281dc85b3f51884205674b6" }
+}

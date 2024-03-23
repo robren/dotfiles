@@ -1,7 +1,10 @@
 # Installation  Notes
 
+First one should git clone my dotfiles repo then execute the stow command as described in the README.md
+
 The steps outlined in the code blocks can be and should, converted into a a setup shell script, 
 to speed up getting a new environemnt.  This serves as a template to building the zsh plugin portion of that script
+
 
 ```bash 
 sudo apt update
@@ -23,19 +26,20 @@ install any plugins manually.  We have to install powerlevel10k manually as it i
 This has instructions for just curling it without oh-my-zsh
 [powerlevel10K GitHub] (https://github.com/romkatv/powerlevel10k)
 
-The repo directions for a manual install show and example of  install to ~/powerlevel10k
+The repo directions for a manual install show an example of  install to ~/powerlevel10k
 
 For a more pro experience I will pick ~/.local/share/zsh-plugins. .local/share is where all the cool stuff is installed.
 
 ::: note
 The instructions do talk about installing some specific fonts, looks good enough for a VM level 
-environment without the patched fonts. On a Mac it is of course worth installing the patched fonts. I see that they can be installed automatically on iterm2
+environment without the patched fonts. On a Mac it is of course worth installing the patched fonts. 
+I see that they can be installed automatically on iterm2
 OR we do it manually if using another term.
 :::
 
 ## Automatic font installation
 > If you are using iTerm2 or Termux, p10k configure can install the recommended font for you. 
-> Simply answer Yes when asked whether to install Meslo Nerd Font.
+> Simply answer Yes when asked whether to install Menlo Nerd Font.
 > If you are using a different terminal, proceed with manual font installation. 👇
 
 ## Clone the git repo and source it in our .zshrc

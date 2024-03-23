@@ -16,7 +16,7 @@ source $ZSH_PLUGIN_DIR/powerlevel10K/powerlevel10k.zsh-theme
 source $ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
+export RANGER_LOAD_DEFAULT=FALSE
 
 ## Added by me
 # Preferred editor for local and remote sessions
@@ -26,12 +26,12 @@ else
   export EDITOR='nvim'
 fi
 
-
 # Set personal aliases, overriding those provided by libs,
 # plugins, and themes. Aliases can be placed here, 
 # users are encouraged to define aliases within th
 #
 alias ls='exa -la --long --header --color=always --sort=old --git --group-directories-first'
+#alias ls='exa -la -l --header --color=always  --sort=old '
 alias vim='nvim'
 alias new='exa -la --long --header --color=always --sort=old --git | head -n 20 '
 # alias new='exa -la --long --header --color=always --sort=modified --reverse | less -y 20 '
@@ -39,7 +39,19 @@ alias tree='exa -T'
 alias h='history'
 alias ..='cd ..'
 alias gst='git status'
+alias vz='nvim ~/.zshrc'
+alias z='zoxide'
 
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
+
+# from the README this initialization must be run after compinit
+eval "$(zoxide init zsh )"
+
+# Turn of the annoying bell when there is no autocomplete
+unsetopt beep
+
+bindkey -e 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

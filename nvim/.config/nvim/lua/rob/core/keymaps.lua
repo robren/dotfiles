@@ -32,4 +32,4 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew <CR>", { desc = "Open current buffer 
 keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a split" }) 
 
 -- One of my old ones
-keymap.set("n", "<leader>w", "<C-w><C-w>", { desc = "Open current buffer in new tab" }) --  move current buffer to new ta
+keymap.set("n", "<leader>w", "<C-w><C-w>", { desc = "Move to next window" }) --  move current buffer to new ta

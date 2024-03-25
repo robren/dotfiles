@@ -11,7 +11,7 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export ZSH_PLUGIN_DIR=$HOME/.local/share/zsh-plugins
-source $ZSH_PLUGIN_DIR/powerlevel10K/powerlevel10k.zsh-theme
+source $ZSH_PLUGIN_DIR/powerlevel10k/powerlevel10k.zsh-theme
 
 source $ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -30,17 +30,22 @@ fi
 # plugins, and themes. Aliases can be placed here, 
 # users are encouraged to define aliases within th
 #
-alias ls='exa -la --long --header --color=always --sort=old --git --group-directories-first'
+
+# Cannot use the --git option iin ubuntu version of exa
+#alias ls='exa -la --long --header --color=always --sort=old --git --group-directories-first'
+alias ls='exa -la --long --header --color=always --sort=old  --group-directories-first'
 #alias ls='exa -la -l --header --color=always  --sort=old '
 alias vim='nvim'
-alias new='exa -la --long --header --color=always --sort=old --git | head -n 20 '
+## the --git option gives erros with the version of exa I install in ubuntu
+#alias new='exa -la --long --header --color=always --sort=old --git | head -n 20 '
+alias new='exa -la --long --header --color=always --sort=old  | head -n 20 '
 # alias new='exa -la --long --header --color=always --sort=modified --reverse | less -y 20 '
 alias tree='exa -T'
 alias h='history'
 alias ..='cd ..'
 alias gst='git status'
 alias vz='nvim ~/.zshrc'
-alias z='zoxide'
+# alias z='zoxide'
 
 # Load and initialise completion system
 autoload -Uz compinit

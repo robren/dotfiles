@@ -2,9 +2,53 @@
 # set -x # Print debugging output
 
 # Update package lists and install dependencies if needed
-sudo apt-get update
-sudo apt install -y neovim git zsh
-sudo apt install -y  exa tree bat ranger ncdu stow
+# make it somwehat platform agnostic.
+
+packages="git zsh exa tree bat ranger ncdu stow neovim"
+
+# Check if the system is Fedora
+if [ -f /etc/fedora-release ]; then
+    echo "Installing utilities on Fedora..."
+    update="dnf update"
+    install="dnf install"
+
+# Check if the system is Ubuntu
+elif [ -f /etc/lsb-release ]; then
+    echo "Installing utilities on Ubuntu..."
+    # On ubuntu the default is 0.6, ancient
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    update="apt update"
+    install="apt install"
+
+# Check if the system is macOS
+elif [ "$(uname)" == "Darwin" ]; then
+    echo "Installing utilities on macOS..."
+    update="brew update"
+    install="brew install"
+
+else
+    echo "Unsupported operating system."
+fi
+
+sudo $update 
+sudo $install $packages  -y
+
+# Let's hold off on doing this if we can.
+# lets build neovim from scratch. The one in the default repo  for ubuntu is 0.6
+# the one in the neovim ppa is 0.7. building from scratch gets us to 0.10
+#
+# Set Zsh build  directory
+#SRC_CODE_DIR=$HOME/Code
+#
+#if [ ! -d "$SRC_CODE_DIR/neovim" ]; then
+#    git clone https://github.com/neovim/neovim.git  $SRC_CODE_DIR/neovim
+#    sudo $install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
+#    cd $SRC_CODE_DIR/neovim
+#    make
+#    sudo make install
+#
+#fi
+
 
 # Clone dotfiles repository if not already cloned
 if [ ! -d "$HOME/dotfiles" ]; then
@@ -59,6 +103,6 @@ if [ ! -d "$ZSH_PLUGIN_DIR/zsh-syntax-highlighting" ]; then
 fi
 
 
+# This should switch to zsh
+exec zsh
 
-echo " Reboot may be needed to switch to Zsh completely"
-echo " logout and in again might work or  exec zsh"

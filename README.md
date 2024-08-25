@@ -1,6 +1,15 @@
 # My dotfiles.
 
+TLDR: After cloning this repo, run the scrips called install.sh in the dotfiles directory. 
+
+Similarly one can ignore what is in the install-notes.md, that's background, just run the install.sh script.
+
 This contains some of my more useful dotfiles in a folder structure which lends itself to be easily used by a utility called Gnu stow.  The stow utility can be used to create symlinks from both the home directory and other subdirectories e.g ~/.config to configuration files contained here. My previous technique was a custom shell script to create the nexessary sym links.
+
+
+Below is legacy prior to me creating the install.sh script. The scritp does what is recomended here.
+
+---------------------------
 
 ## Install-notes
 

@@ -1,6 +1,6 @@
 # My dotfiles.
 
-TLDR: After cloning this repo, run the scrips called install.sh in the dotfiles directory. 
+TLDR: After cloning this repo, run the script called install.sh in the dotfiles directory. 
 
 Similarly one can ignore what is in the install-notes.md, that's background, just run the install.sh script.
 

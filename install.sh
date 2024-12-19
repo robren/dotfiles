@@ -4,7 +4,7 @@
 # Update package lists and install dependencies if needed
 # make it somwehat platform agnostic.
 
-packages="git zsh exa tree bat ranger ncdu stow neovim"
+packages="git zsh exa tree bat ranger ncdu stow neovim fzf"
 
 # Check if the system is Fedora
 if [ -f /etc/fedora-release ]; then

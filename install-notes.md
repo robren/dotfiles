@@ -1,75 +1,154 @@
-# Installation  Notes
+# Installation Notes
 
-First one should git clone my dotfiles repo then execute the stow command as described in the README.md
+This repository contains dotfiles for both **Zsh** and **Fish** shells, organized for use with GNU Stow. The setup has been split into modular scripts to support different shells and platforms.
 
-The steps outlined in the code blocks can be and should, converted into a a setup shell script, 
-to speed up getting a new environemnt.  This serves as a template to building the zsh plugin portion of that script
+## Quick Setup
 
-
-```bash 
-sudo apt update
-sudo apt install zsh git neovim
-chsh -s $(which zsh)
+1. Clone the dotfiles repository:
+```bash
+git clone https://github.com/robren/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ```
 
-- logout and in again or:
+2. Run the installation script:
+```bash
+./install.sh
+```
+
+This will:
+- Detect your platform (Ubuntu, Fedora, Arch, macOS)
+- Install common packages (git, stow, neovim, fzf, bat, yazi, tree, fish)
+- Use GNU Stow to symlink all dotfiles
+- Set up your chosen shell (Fish or Zsh)
+
+## Manual Installation Steps
+
+If you prefer to install manually or need to troubleshoot:
+
+### 1. Install Base Packages
+
+**Ubuntu/Debian:**
+```bash
+sudo apt update
+sudo apt install git stow neovim fzf bat yazi tree fish zsh
+```
+
+**Fedora:**
+```bash
+sudo dnf update
+sudo dnf install git stow neovim fzf bat yazi tree fish zsh
+```
+
+**Arch Linux:**
+```bash
+sudo pacman -Syu
+sudo pacman -S git stow neovim fzf bat yazi tree fish zsh
+```
+
+**macOS:**
+```bash
+brew update
+brew install git stow neovim fzf bat yazi tree fish zsh
+```
+
+### 2. Stow Dotfiles
 
 ```bash
-exec zsh
+cd ~/dotfiles
+stow -vt ~ */
 ```
 
-I want a less bloat but appealing prompt. So will not use oh-my-zsh will 
-install any plugins manually.  We have to install powerlevel10k manually as it is.
+This creates symlinks from `~` and `~/.config` to all dotfiles in the repository.
 
-# Powerlevel10k The backbone of making things look cool
+### 3. Choose Your Shell
 
-This has instructions for just curling it without oh-my-zsh
-[powerlevel10K GitHub] (https://github.com/romkatv/powerlevel10k)
+#### Option A: Fish Shell (Recommended)
 
-The repo directions for a manual install show an example of  install to ~/powerlevel10k
+Fish provides modern features out of the box with minimal configuration.
 
-For a more pro experience I will pick ~/.local/share/zsh-plugins. .local/share is where all the cool stuff is installed.
+```bash
+# Set Fish as default shell
+chsh -s $(which fish)
 
-::: note
-The instructions do talk about installing some specific fonts, looks good enough for a VM level 
-environment without the patched fonts. On a Mac it is of course worth installing the patched fonts. 
-I see that they can be installed automatically on iterm2
-OR we do it manually if using another term.
-:::
+# Install Fisher plugin manager (run in fish shell)
+fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
 
-## Automatic font installation
-> If you are using iTerm2 or Termux, p10k configure can install the recommended font for you. 
-> Simply answer Yes when asked whether to install Menlo Nerd Font.
-> If you are using a different terminal, proceed with manual font installation. 👇
-
-## Clone the git repo and source it in our .zshrc
-```zsh  
-ZSH-PLUGIN-DIR=$HOME/.local/share/zsh-plugins 
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH-PLUGIN-DIR/powerlevel10k
-``` 
-
-## Source the powerlevel10.zsh-theme
-```zsh  
-# Add this to our .zshrc file
-export ZSH-PLUGIN-DIR=$HOME/.local/share/zsh-plugins 
-source $ZSH-PLUGIN/powerlevel10k/powerlevel10k.zsh-theme
-``` 
-After doing this and opening a new zsh the powerlevel configurator runs.
-It asks a bunch of questions about how you want the prompt to look then stores  this in a ~/.p10k.zsh file.
-
-# Additional zsh packages
-Now just have to see what other packages  I need and how to install them manually. And then source 'em
-```zsh
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN_DIR/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGIN_DIR/zsh-syntax-highlighting
-
+# Install plugins (optional)
+fish -c "fisher install jethrokuan/z"
+fish -c "fisher install franciscolourenco/done"
 ```
 
-## Additional utilities
+#### Option B: Zsh Shell
 
-- exa
-- tree
-- bat
-- ranger
-- ncdu
-- stow
+For a minimal but appealing Zsh setup without Oh-My-Zsh bloat:
+
+```bash
+# Set Zsh as default shell
+chsh -s $(which zsh)
+
+# Create plugin directory
+mkdir -p ~/.local/share/zsh-plugins
+
+# Install Powerlevel10k theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.local/share/zsh-plugins/powerlevel10k
+
+# Install useful plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.local/share/zsh-plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.local/share/zsh-plugins/zsh-syntax-highlighting
+```
+
+After setting up Zsh, restart your shell and Powerlevel10k will run its configuration wizard.
+
+## Shell Scripts Overview
+
+- **`install.sh`**: Main installation script that detects platform and installs packages
+- **`setup-fish.sh`**: Fish-specific setup (sets default shell, installs Fisher)
+- **`setup-zsh.sh`**: Zsh-specific setup (installs plugins, sets default shell)
+
+## Font Requirements (Zsh with Powerlevel10k)
+
+For the best experience with Powerlevel10k:
+
+### Automatic Installation (iTerm2/Termux)
+Run `p10k configure` and answer "Yes" when prompted to install Menlo Nerd Font.
+
+### Manual Installation
+Download and install a Nerd Font from [nerdfonts.com](https://www.nerdfonts.com/). Popular choices:
+- FiraCode Nerd Font
+- JetBrains Mono Nerd Font
+- Source Code Pro Nerd Font
+
+## Cross-Platform Considerations
+
+The dotfiles are designed to work across different platforms. Platform-specific configurations use conditionals:
+
+```fish
+# Example: Homebrew setup only on macOS
+if test -x /opt/homebrew/bin/brew
+    eval (/opt/homebrew/bin/brew shellenv)
+end
+```
+
+## Utilities Included
+
+The setup installs these modern CLI tools:
+- **bat**: Syntax-highlighted `cat` replacement
+- **yazi**: Modern file manager
+- **fzf**: Fuzzy finder
+- **tree**: Directory structure visualization
+- **neovim**: Modern Vim
+
+## Troubleshooting
+
+### Stow Issues
+- Ensure `~/.config` directory exists before running stow
+- Use `stow -D */` to remove symlinks if needed
+- Use `stow -vt ~ */` for verbose output
+
+### Shell Issues
+- Logout and login again after changing default shell
+- Or run `exec fish` / `exec zsh` to switch immediately
+
+### Platform-Specific
+- On some systems, you may need to add the new shell to `/etc/shells` before using `chsh`
+- Fisher requires Fish shell to be active when installing

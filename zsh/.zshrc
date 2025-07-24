@@ -33,14 +33,15 @@ fi
 
 # Cannot use the --git option iin ubuntu version of exa
 #alias ls='exa -la --long --header --color=always --sort=old --git --group-directories-first'
-alias ls='exa -la --long --header --color=always --sort=old  --group-directories-first'
+#alias ls='exa -la --long --header --color=always --sort=old  --group-directories-first'
+#alias ls='exa --header --color=always --sort=old  --group-directories-first'
 #alias ls='exa -la -l --header --color=always  --sort=old '
 alias vim='nvim'
 ## the --git option gives erros with the version of exa I install in ubuntu
 #alias new='exa -la --long --header --color=always --sort=old --git | head -n 20 '
-alias new='exa -la --long --header --color=always --sort=old  | head -n 20 '
+alias new='eza -la --long --header --color=always --sort=old  | head -n 20 '
 # alias new='exa -la --long --header --color=always --sort=modified --reverse | less -y 20 '
-alias tree='exa -T'
+alias tree='eza -T'
 alias h='history'
 alias ..='cd ..'
 alias gst='git status'
@@ -61,6 +62,12 @@ bindkey -e
 
 
 export PATH="$HOME/bin:$PATH"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/Rob/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -77,7 +84,5 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
 
 

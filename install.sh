@@ -2,7 +2,7 @@
 set -e
 
 # Common packages to install (kitty handled separately, yazi handled specially)
-COMMON_PACKAGES="git stow neovim fzf bat tree fish zsh"
+COMMON_PACKAGES="git stow neovim fzf bat tree fish zsh lazygit"
 
 # Function to install yazi based on platform
 install_yazi() {
@@ -169,6 +169,12 @@ install_kitty() {
     read -p "Install Kitty terminal emulator? (y/n): " install_kitty_choice
     
     if [ "$install_kitty_choice" = "y" ] || [ "$install_kitty_choice" = "Y" ]; then
+
+       # Create necessary local directories before installation
+        echo "Creating local directories..."
+        mkdir -p ~/.local/{bin,lib,share/{applications,icons,fonts}}
+        mkdir -p ~/.config/kitty/themes
+
         case "$1" in
             "ubuntu"|"debian")
                 # Kitty installer script (recommended method)

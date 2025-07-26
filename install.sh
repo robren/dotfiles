@@ -47,10 +47,26 @@ fi
 [ ! -d "$HOME/dotfiles" ] && git clone https://github.com/robren/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
-# Backup existing configs
-for file in "$HOME/.zshrc" "$HOME/.config/fish/config.fish"; do
-    [ -f "$file" ] && [ ! -L "$file" ] && mv "$file" "$file.backup"
-done
+FISHDIR="$HOME/.config/fish"
+
+# Only back up real files (skip if the whole config dir is symlinked)
+if [ -d "$FISHDIR" ] && [ ! -L "$FISHDIR" ]; then
+  CFG="$FISHDIR/config.fish"
+  if [ -f "$CFG" ]; then
+    echo "Backing up existing fish config → $CFG.backup"
+    mv "$CFG" "$CFG.backup"
+  fi
+fi
+
+ZSHRC="$HOME/.zshrc"
+if [ -f "$ZSHRC" ] && [ ! -L "$ZSHRC" ]; then
+  echo "Backing up existing zshrc → $ZSHRC.backup"
+  mv "$ZSHRC" "$ZSHRC.backup"
+fi
+
+# Now cd into your dotfiles repo before stowing
+cd ~/dotfiles
+
 
 # Install dotfiles with stow
 echo ""

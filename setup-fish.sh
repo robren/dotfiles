@@ -41,7 +41,7 @@ end
 echo "Installing recommended Fish plugins..."
 fish -c "
 # Install commonly useful plugins
-set -l plugins franciscolourenco/done PatrickF1/fzf.fish
+#set -l plugins franciscolourenco/done PatrickF1/fzf.fish
 
 for plugin in \$plugins
     if not fisher list | grep -q \$plugin
@@ -65,3 +65,4 @@ echo "Installed plugins:"
 fish -c "fisher list"
 echo ""
 echo "To start using Fish immediately, run: exec fish"
+

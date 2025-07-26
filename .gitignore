@@ -1,3 +1,17 @@
 nvim/.config/nvim/lazy-lock.json
 .DS_Store
 
+fish/.config/fish/completions/
+fish/.config/fish/conf.d/done.fish
+fish/.config/fish/functions/_fzf_*.fish
+fish/.config/fish/functions/fzf_*.fish
+# Fish plugin files managed by Fisher
+fish/.config/fish/completions/
+fish/.config/fish/conf.d/done.fish
+fish/.config/fish/conf.d/fzf.fish
+fish/.config/fish/functions/_fzf_*.fish
+fish/.config/fish/functions/fzf_*.fish
+fish/.config/fish/functions/fisher.fish
+
+# Fish variables (auto-generated)
+fish/.config/fish/fish_variables

@@ -25,44 +25,8 @@ else
     echo "Fish is already the default shell."
 fi
 
-# Install Fisher plugin manager
-echo "Installing Fisher plugin manager..."
-fish -c "
-if not functions -q fisher
-    curl -sL https://git.io/fisher | source
-    fisher install jorgebucaran/fisher
-    echo 'Fisher installed successfully'
-else
-    echo 'Fisher is already installed'
-end
-"
-
-# Install useful Fish plugins
-echo "Installing recommended Fish plugins..."
-fish -c "
-# Install commonly useful plugins
-#set -l plugins franciscolourenco/done PatrickF1/fzf.fish
-
-for plugin in \$plugins
-    if not fisher list | grep -q \$plugin
-        echo 'Installing \$plugin...'
-        fisher install \$plugin
-    else
-        echo '\$plugin is already installed'
-    end
-end
-"
-
-# Check if fish_plugins file exists and restore plugins from it
-if [ -f "$HOME/.config/fish/fish_plugins" ]; then
-    echo "Restoring plugins from fish_plugins file..."
-    fish -c "fisher update"
-fi
-
 echo ""
 echo "Fish shell setup complete!"
-echo "Installed plugins:"
-fish -c "fisher list"
 echo ""
 echo "To start using Fish immediately, run: exec fish"
 

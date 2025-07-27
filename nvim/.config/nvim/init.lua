@@ -19,5 +19,3 @@ require("keymaps")
 -- Setup lazy.nvim with plugins
 require("lazy").setup("plugins")
 
--- Test of tpope
--- Some way of surrounding text with quotes or brackets

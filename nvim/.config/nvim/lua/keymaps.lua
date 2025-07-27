@@ -10,8 +10,7 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Delete single character without copying into register
-keymap.set("n", "x", "_x")
-
+-- keymap.set("n", "x", "_x")
 
 -- Window management (keep your favorite!)
 keymap.set("n", "<leader>w", "<C-w><C-w>", { desc = "Move to next window" })

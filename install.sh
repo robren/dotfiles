@@ -2,7 +2,7 @@
 set -e
 
 # Common packages
-PACKAGES="git stow neovim fzf bat tree fish zsh zoxide"
+PACKAGES="git stow neovim fzf bat tree fish zsh zoxide kitty"
 
 # Detect platform and install
 if command -v dnf &>/dev/null; then
@@ -30,8 +30,8 @@ elif command -v apt &>/dev/null; then
     
 elif command -v pacman &>/dev/null; then
     echo "Installing on Arch..."
-    sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm --needed $PACKAGES lazygit yazi
+#    sudo pacman -Syu --noconfirm
+    sudo pacman -Sy --noconfirm --needed lazygit yazi $PACKAGES 
     
 elif [ "$(uname)" == "Darwin" ]; then
     echo "Installing on macOS..."
@@ -82,18 +82,6 @@ case $choice in
     3) ;;
 esac
 
-# Install Kitty
-if ! command -v kitty &>/dev/null; then
-    read -p "Install Kitty? (y/n): " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        case "$(uname)" in
-            Linux) curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin ;;
-            Darwin) brew install --cask kitty ;;
-        esac
-    fi
-fi
-
 # Setup shell
 echo ""
 echo "Setup shell:"
@@ -111,5 +99,4 @@ echo ""
 echo "Done! Next steps:"
 command -v fish &>/dev/null && echo "• Try fish: fish"
 command -v zsh &>/dev/null && echo "• Try zsh: zsh"
-echo "• Change default shell: chsh -s \$(which fish)"
 echo "• Install a Nerd Font"

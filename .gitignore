@@ -17,3 +17,4 @@ fish/.config/fish/functions/fisher.fish
 fish/.config/fish/fish_variables
 
 yazi.toml-*
+tmux/.config/tmux/plugins/

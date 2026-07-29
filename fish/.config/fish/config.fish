@@ -1,5 +1,5 @@
 
-set -gx PATH  ~/bin  ~/.local/bin  /usr/local/bin $PATH
+set -gx PATH ~/bin ~/.local/bin /usr/local/bin /usr/local/zfs/bin $PATH
 # └── new dir here ──┘  └── then append the existing PATH
 fish_add_path /opt/homebrew/bin
 
@@ -8,6 +8,8 @@ set -gx EDITOR nvim
 
 # not set by default on mac os
 set -x XDG_CONFIG_HOME "$HOME/.config"
+
+fish_add_path /usr/local/zfs/bin
 
 alias vim nvim
 fish_default_key_bindings
@@ -67,3 +69,9 @@ set fish_prompt_pwd_dir_length 0
 # Work around the annoying claude mechanism of directoriy naming.
 alias cdmem="cd ~/.claude/projects/-Users-Rob"
 alias cdcodemem="cd ~/.claude/projects/-Users-Rob-Code-Claude"
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/Rob/.lmstudio/bin
+# End of LM Studio CLI section
+
+export PATH="$HOME/.local/bin:$PATH"

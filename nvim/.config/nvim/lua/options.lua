@@ -31,6 +31,20 @@ opt.scrolloff   = 10
 opt.backspace = "indent,eol,start"
 
 --- clipboard
+-- use OSC 52 so yanks reach the local clipboard over SSH / through herdr,
+-- instead of relying on pbcopy (which only works when nvim runs locally)
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+  },
+} 
+---
 opt.clipboard:append("unnamedplus")
 
 -- split windows

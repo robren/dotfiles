@@ -1,6 +1,7 @@
 
-set -gx PATH  ~/bin  /usr/local/bin $PATH
+set -gx PATH  ~/bin  ~/.local/bin  /usr/local/bin $PATH
 # └── new dir here ──┘  └── then append the existing PATH
+fish_add_path /opt/homebrew/bin
 
 #set -gx PATH /opt/homebrew/bin $PATH
 set -gx EDITOR nvim
@@ -63,3 +64,6 @@ end
 
 set fish_prompt_pwd_dir_length 0
 
+# Work around the annoying claude mechanism of directoriy naming.
+alias cdmem="cd ~/.claude/projects/-Users-Rob"
+alias cdcodemem="cd ~/.claude/projects/-Users-Rob-Code-Claude"
